@@ -62,7 +62,7 @@ const Modal: React.FC<ModalProps> = ({
 
   return (
     <>
-      <div 
+      <div
         className="
     justifty-center
     flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none
@@ -80,11 +80,18 @@ const Modal: React.FC<ModalProps> = ({
             className={`translate duration-300 h-full ${
               showModal ? "translate-y-0" : "-translate-y-full"
             }
-            ${
-                showModal ? "opacity-100" : "opacity-0"
-              }
+            ${showModal ? "opacity-100" : "opacity-0"}
             `}
-          ></div>
+          >
+            <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none">
+              {/* header */}
+
+<div>
+    
+</div>
+
+            </div>
+          </div>
         </div>
       </div>
     </>
