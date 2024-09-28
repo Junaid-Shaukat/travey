@@ -2,6 +2,7 @@ import { Nunito } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
+import Modal from "./components/modals/Modal";
 
 export const metadata: Metadata = {
   title: "Travey",
@@ -9,8 +10,8 @@ export const metadata: Metadata = {
 };
 
 const font = Nunito({
-  subsets:["latin"]
-})
+  subsets: ["latin"],
+});
 
 export default function RootLayout({
   children,
@@ -20,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-      <Navbar/>
-        {children}</body>
+        <Modal isOpen/>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
