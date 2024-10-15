@@ -6,9 +6,20 @@ import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import LoginModal from "../modals/LoginModal";
+// import LoginModal from "../modals/LoginModal";
+import { User } from "@prisma/client";
+import { signOut } from "next-auth/react";
 
-const UserMenu = () => {
+interface UserMenuProps{
+  currentUser?: User | null;
+}
+
+
+const UserMenu: React.FC<UserMenuProps>= (
+  {
+    currentUser
+  }
+) => {
   const [isOpen, setIsOpen] = useState(false);
 
 // useCallback hook helps to freez function or memorize function when tne components is re rendred
@@ -35,7 +46,7 @@ Travey your home
 
             <AiOutlineMenu/>
             <div className="hidden md:block">
-                <Avatar/>
+                <Avatar src={currentUser?.image}/>
             </div>
 
         </div>
@@ -55,10 +66,22 @@ Travey your home
           text-sm
           ">
             <div className="flex flex-col cursor-pointer">
-              <>
-             <MenuItem onClick={LoginModal.onOpen} label="Login" /> 
-             <MenuItem onClick={registerModal.onOpen} label="Sign Up" /> 
-              </>
+             {
+              currentUser ? ( <>
+                <MenuItem onClick={()=>{}} label="My Trips" /> 
+                <MenuItem onClick={()=>{}} label="My Favourites" /> 
+                <MenuItem onClick={()=>{}} label="My Reservations" /> 
+                <MenuItem onClick={()=>{}} label="My Properties" /> 
+                <MenuItem onClick={()=>{}} label="Travery my home" /> 
+                <hr />
+                <MenuItem onClick={()=>{signOut()}} label="Logout" />
+                 </>) : (
+                <>
+                <MenuItem onClick={LoginModal.onOpen} label="Login" /> 
+                <MenuItem onClick={registerModal.onOpen} label="Sign Up" /> 
+                 </>
+              )
+             }
             </div>
 
           </div>
