@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"; 
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; // Import eye icons
 import useRegisterModal from "@/app/hooks/useRegisterModal"; 
+import useLoginModal from "@/app/hooks/useLoginModal"; 
 import Modal from "./Modal"; 
 import Heading from "../Heading"; 
 import Input from "@/app/components/inputs/Input"; 
@@ -14,6 +15,7 @@ import Button from "../Button";
 
 const RegisterModal = () => { 
   const registerModal = useRegisterModal(); 
+  const LoginModal = useLoginModal(); 
   const [isLoading, setIsLoading] = useState(false); 
   const [showPassword, setShowPassword] = useState(false); // State for password visibility
 
@@ -98,7 +100,7 @@ const RegisterModal = () => {
           <div>Already have an account?</div> 
           <div onClick={registerModal.onClose} 
             className="text-neutral-800 cursor-pointer hover:underline font-bold"> 
-            Login 
+           <span onClick={LoginModal.onOpen} > Login </span>
           </div> 
         </div> 
       </div> 
